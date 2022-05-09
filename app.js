@@ -15,11 +15,11 @@ var accessLogStream = rfs.createStream('access.log', {
     path: path.join(__dirname, 'log')
 })
 
-// const apiLimiter = rateLimit({
-//     windowMs: 60 * 1000, // 1 minutes
-//     max: 2,
-//     message: 'Too many connection',
-// });
+const apiLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minutes
+    max: 10,
+    message: 'Too many connection',
+});
 
 // setup the logger
 app.use(morgan('dev'));
@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use('/',  router);
+app.use('/',  apiLimiter, router);
 
 
-app.listen(4000, () => console.log('server is running on port: 4000'));
+app.listen(4500, () => console.log('server is running on port: 4500'));
