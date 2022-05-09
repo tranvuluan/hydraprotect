@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3rem;
+      border-radius: 12px;
+      height: 400px;
+      min-width: 20%;
+      background-color: rgb(218, 218, 218);
+    }
+
+    .login-title {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: 200px;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    input {
+      border: none;
+      padding: 0.35rem;
+      font-family: "Inter", sans-serif;
+      margin: 0.75rem 0;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      align-self: center;
+      margin-top: 1rem;
+      font-size: 1rem;
+      padding: 0.65rem;
+      border-radius: 4px;
+      color: white;
+      background-color: rgb(161, 161, 161);
+    }
+
+    .login-register {
+      margin: 2rem 1rem 0 1rem;
+      font-size: 1rem;
+    }
+
+    .login-register-link {
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 1rem;
+      color: rgb(105, 105, 105);
+      font-weight: 700;
+    }
+  </style>
+
+</head>
+
+<body>
+  <%- include('includes/nav.ejs') %>
+    <section class="login-container">
+      <div class="login-title"> Log in</div>
+      <form method="POST" action="/login">
+        <label>USERNAME</label>
+        <input type="text" placeholder="Enter your username" name="username" />
+        <label>PASSWORD</label>
+        <input type="password" placeholder="Enter your password" name="password" />
+        <button type="submit"> Continue </button>
+      </form>
+      <span id="authstatus">
+        <%- result %>
+      </span>
+    </section>
+</body>
+
+</html>
